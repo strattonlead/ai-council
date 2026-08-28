@@ -1,0 +1,11 @@
+{
+  "name": "createif-skills",
+  "owner": { "name": "createIF Labs" },
+  "plugins": [
+    {
+      "name": "ai-council",
+      "description": "Multi-model debate over a LiteLLM proxy, with synthesis of consensus and dissent.",
+      "source": "./"
+    }
+  ]
+}
