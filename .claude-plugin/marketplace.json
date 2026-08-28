@@ -1,11 +1,15 @@
 {
-  "name": "createif-skills",
-  "owner": { "name": "createIF Labs" },
+  "name": "strattonlead",
+  "owner": {
+    "name": "strattonlead",
+    "url": "https://github.com/strattonlead"
+  },
   "plugins": [
     {
       "name": "ai-council",
-      "description": "Multi-model debate over a LiteLLM proxy, with synthesis of consensus and dissent.",
-      "source": "./"
+      "description": "Convene a council of frontier models through a LiteLLM proxy, let them debate a question over multiple rounds, and synthesize consensus and dissent.",
+      "source": "./plugins/ai-council",
+      "category": "research"
     }
   ]
 }

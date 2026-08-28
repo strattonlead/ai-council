@@ -1,6 +1,0 @@
-{
-  "name": "ai-council",
-  "description": "Convene a council of frontier models through a LiteLLM proxy, let them debate a question over multiple rounds, and synthesize agreement and dissent.",
-  "version": "0.1.0",
-  "author": { "name": "createIF Labs" }
-}

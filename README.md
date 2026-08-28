@@ -1,52 +1,42 @@
-# ai-council
+# strattonlead skills
 
-A Claude Agent Skill that puts a question to several frontier models through one LiteLLM
-proxy, makes them argue over multiple rounds, and reports what survived the argument.
-
-Credentials live in `~/.ai-council/config.env` (mode 600) and are never read into the
-model's context — see `skills/ai-council/references/setup.md`.
+Claude Code plugin marketplace.
 
 ## Install
 
-**Claude Code / Cowork, as a plugin**
-
 ```
-/plugin marketplace add <your-org>/<this-repo>
-/plugin install ai-council@createif-skills
+/plugin marketplace add strattonlead/ai-counsil
+/plugin install ai-council@strattonlead
 ```
 
-**Claude Code, without a repo**
+If Claude Code reports `Run /reload-plugins to activate.`, run that to make the skill
+available in the current session.
+
+## Plugins
+
+### ai-council
+
+Puts a question to several frontier models through one LiteLLM proxy, makes them argue
+over multiple rounds, and reports what survived the argument.
+
+After installing, set up the proxy credentials once — run this yourself, the key input is
+hidden so it never reaches the model:
 
 ```bash
-cp -r skills/ai-council ~/.claude/skills/     # personal, all projects
-cp -r skills/ai-council .claude/skills/       # project-scoped, commit with the repo
+bash ~/.claude/plugins/strattonlead/ai-council/skills/ai-council/scripts/init_config.sh
 ```
 
-**claude.ai / Claude Desktop**
+Or just ask Claude to check the council setup; it will locate the script and hand you the
+exact command.
 
-Zip the `skills/ai-council` folder so that `ai-council/SKILL.md` sits at the archive root,
-then upload it under Settings → Capabilities → Skills. Note that the claude.ai skill
-sandbox may have no outbound network access, in which case the skill cannot reach your
-proxy — it is intended primarily for Claude Code, Cowork, and Desktop.
+Credentials are stored in `~/.ai-council/config.env` (mode 600), outside this repository.
+Details in `plugins/ai-council/skills/ai-council/references/setup.md`.
 
-## Setup
+Requires Python 3.9+ (standard library only) and a reachable LiteLLM proxy serving at
+least two models.
 
-```bash
-bash skills/ai-council/scripts/init_config.sh   # run this yourself; key entry is hidden
-python3 skills/ai-council/scripts/check_setup.py
-```
+## Adding another plugin
 
-## Usage
-
-Ask naturally — "get the council's take on whether we should move to Kafka" — or run it
-directly:
-
-```bash
-python3 skills/ai-council/scripts/council.py \
-  --topic "Should we migrate the event pipeline to Kafka?" \
-  --rounds 2 --out council.md
-```
-
-## Requirements
-
-Python 3.9+, standard library only. A reachable LiteLLM proxy serving at least two models.
+1. Create `plugins/<name>/` with its own `.claude-plugin/plugin.json` and `skills/<name>/`.
+2. Add an entry to `.claude-plugin/marketplace.json` with `"source": "./plugins/<name>"`.
+3. Bump that plugin's own `version`; the marketplace name stays `strattonlead`.

@@ -1,0 +1,11 @@
+{
+  "name": "ai-council",
+  "description": "Convene a council of frontier models through a LiteLLM proxy, let them debate a question over multiple rounds, and synthesize consensus and dissent.",
+  "version": "0.1.0",
+  "author": {
+    "name": "strattonlead",
+    "url": "https://github.com/strattonlead"
+  },
+  "homepage": "https://github.com/strattonlead/ai-counsil",
+  "license": "MIT"
+}
